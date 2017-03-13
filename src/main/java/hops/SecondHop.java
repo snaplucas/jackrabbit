@@ -1,18 +1,17 @@
-package br.com.main;
+package hops;
 
+import org.apache.jackrabbit.core.TransientRepository;
+
+import javax.jcr.Node;
 import javax.jcr.Repository;
 import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
-import javax.jcr.Node;
-
-import org.apache.jackrabbit.commons.JcrUtils;
 
 public class SecondHop {
 
     public static void main(String[] args) throws Exception {
-        Repository repository = JcrUtils.getRepository();
-        Session session = repository.login(new SimpleCredentials("admin",
-                "admin".toCharArray()));
+        Repository repository = new TransientRepository();
+        Session session = repository.login(new SimpleCredentials("admin", "admin".toCharArray()));
         try {
             Node root = session.getRootNode();
 

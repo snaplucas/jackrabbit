@@ -1,16 +1,15 @@
-package br.com.main;
+package hops;
+
+import org.apache.jackrabbit.commons.JcrUtils;
 
 import javax.jcr.*;
 import java.io.FileInputStream;
-
-import org.apache.jackrabbit.commons.JcrUtils;
 
 public class ThirdHop {
 
     public static void main(String[] args) throws Exception {
         Repository repository = JcrUtils.getRepository();
-        Session session = repository.login(new SimpleCredentials("admin",
-                "admin".toCharArray()));
+        Session session = repository.login(new SimpleCredentials("admin", "admin".toCharArray()));
 
         FileInputStream xml = new FileInputStream("src/main/resources/test.xml");
         try {
@@ -22,8 +21,7 @@ public class ThirdHop {
                 // Create an unstructured node under which to import the XML
                 Node node = root.addNode("importxml", "nt:unstructured");
                 // Import the file "test.xml" under the created node
-                session.importXML(node.getPath(), xml,
-                        ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW);
+                session.importXML(node.getPath(), xml, ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW);
 
                 session.save();
                 System.out.println("done.");
@@ -35,7 +33,9 @@ public class ThirdHop {
         }
     }
 
-    /** Recursively outputs the contents of the given node. */
+    /**
+     * Recursively outputs the contents of the given node.
+     */
     private static void dump(Node node) throws RepositoryException {
         // First output the node path
         System.out.println(node.getPath());
@@ -52,13 +52,11 @@ public class ThirdHop {
                 // A multi-valued property, print all values
                 Value[] values = property.getValues();
                 for (int i = 0; i < values.length; i++) {
-                    System.out.println(property.getPath() + " = "
-                            + values[i].getString());
+                    System.out.println(property.getPath() + " = " + values[i].getString());
                 }
             } else {
                 // A single-valued property
-                System.out.println(property.getPath() + " = "
-                        + property.getString());
+                System.out.println(property.getPath() + " = " + property.getString());
             }
         }
 

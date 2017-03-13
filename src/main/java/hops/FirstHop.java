@@ -1,10 +1,10 @@
-package br.com.main;
+package hops;
+
+import org.apache.jackrabbit.commons.JcrUtils;
 
 import javax.jcr.GuestCredentials;
 import javax.jcr.Repository;
 import javax.jcr.Session;
-
-import org.apache.jackrabbit.commons.JcrUtils;
 
 public class FirstHop {
 
@@ -14,8 +14,7 @@ public class FirstHop {
         try {
             String user = session.getUserID();
             String name = repository.getDescriptor(Repository.REP_NAME_DESC);
-            System.out.println("Logged in as " + user + " to a " + name
-                    + " repository.");
+            System.out.println("Logged in as " + user + " to a " + name + " repository.");
         } finally {
             session.logout();
         }

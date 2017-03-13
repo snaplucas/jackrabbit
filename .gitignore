@@ -9,3 +9,5 @@ target/
 derby.log
 jackrabbit.iml
 jackrabbit/
+repository.xml
+repository/
