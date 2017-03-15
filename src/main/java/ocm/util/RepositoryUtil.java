@@ -20,12 +20,4 @@ public class RepositoryUtil {
             throw new RepositoryException("Impossible to login ", e);
         }
     }
-
-    public static Session login(Repository repository, String user, String password, String workspace) throws RepositoryException {
-        try {
-            return repository.login(new SimpleCredentials(user, password.toCharArray()), workspace);
-        } catch (Exception e) {
-            throw new RepositoryException("Impossible to login ", e);
-        }
-    }
 }

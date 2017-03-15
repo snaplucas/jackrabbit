@@ -33,7 +33,6 @@ public class Main {
             getAllVersions(ocm);
             showAllVersions(ocm);
 
-            // Insert an object
             System.out.println("Insert a press release in the repository");
             PressRelease pressRelease = new PressRelease();
             pressRelease.setPath("/newtutorial");
@@ -50,12 +49,10 @@ public class Main {
             ocm.save();
             ocm.checkin("/newtutorial");
 
-            // Retrieve
             System.out.println("Retrieve a press release from the repository");
             pressRelease = (PressRelease) ocm.getObject("/newtutorial");
             System.out.println("PressRelease title : " + pressRelease.getTitle());
 
-            // Delete
             System.out.println("Remove a press release from the repository");
             ocm.remove(pressRelease);
             ocm.save();
